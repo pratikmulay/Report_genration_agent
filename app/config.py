@@ -11,23 +11,24 @@ class Settings(BaseSettings):
     """Report Synthesis Agent configuration."""
 
     # --- LLM Provider ---
-    LLM_PROVIDER: Literal["ollama", "claude", "openai", "groq"] = "ollama"
+    LLM_PROVIDER: Literal["ollama", "openai", "anthropic", "groq", "grok"] = "ollama"
 
     # Ollama
-    OLLAMA_BASE_URL: str = "http://ollama:11434"
-    OLLAMA_MODEL: str = "llama3.1:8b"
+    OLLAMA_BASE_URL: str = ""
+    OLLAMA_MODEL: str = ""
 
     # Claude / Anthropic
     ANTHROPIC_API_KEY: Optional[str] = None
-    CLAUDE_MODEL: str = "claude-sonnet-4-20250514"
+    CLAUDE_MODEL: Optional[str] = None
 
     # OpenAI
     OPENAI_API_KEY: Optional[str] = None
-    OPENAI_MODEL: str = "gpt-4o"
+    OPENAI_MODEL: Optional[str] = None
 
     # Groq
-    GROQ_API_KEY: Optional[str] = None
-    GROQ_MODEL: str = "llama-3.1-70b-versatile"
+    GROQ_API_KEY: Optional[str] = "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"
+    XAI_API_KEY: Optional[str] = None
+    GROQ_MODEL: str = "llama-3.1-8b-instant"
 
     # --- Storage ---
     STORAGE_TYPE: Literal["local", "s3"] = "local"

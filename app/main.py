@@ -157,7 +157,7 @@ async def _export_report(
 async def health_check():
     """Service health check."""
     return HealthResponse(
-        llm_provider=settings.LLM_PROVIDER,
+        llm_provider="grok" if getattr(settings, "XAI_API_KEY", "") else settings.LLM_PROVIDER,
         storage_type=settings.STORAGE_TYPE,
     )
 

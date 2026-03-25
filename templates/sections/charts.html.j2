@@ -1,0 +1,18 @@
+{% if charts %}
+<section id="visualizations" class="report-section">
+    <h2>Visualizations</h2>
+    <div class="charts-grid">
+        {% for chart in charts %}
+        <div class="chart-container">
+            {% if chart.image_base64 %}
+            <img src="data:image/png;base64,{{ chart.image_base64 }}" alt="{{ chart.title }}" class="chart-image">
+            {% endif %}
+            <p class="chart-caption">{{ chart.title }}</p>
+            {% if chart.description %}
+            <p class="chart-description">{{ chart.description }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

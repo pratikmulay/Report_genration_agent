@@ -94,6 +94,21 @@ jobs:
               --set-env-vars $ENV_VARS
           fi
 
+          # Set health probe to /health (not / which returns 404)
+          echo "🩺 Configuring health probes → /health"
+          az containerapp update \
+            --name ${{ env.AGENT_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --set-env-vars PORT=${{ env.TARGET_PORT }} \
+            --liveness-probe-path /health \
+            --liveness-probe-port ${{ env.TARGET_PORT }} \
+            --liveness-probe-initial-delay 20 \
+            --liveness-probe-period 30 \
+            --readiness-probe-path /health \
+            --readiness-probe-port ${{ env.TARGET_PORT }} \
+            --readiness-probe-initial-delay 10 \
+            --readiness-probe-period 15 2>/dev/null || echo "⚠️  Health probe flags not supported in this CLI version — configure manually in Azure Portal"
+
       - name: Show Deployment Status
         run: |
           echo "✅ ${{ env.AGENT_NAME }} deployed (internal ingress)"

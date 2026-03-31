@@ -1,19 +1,12 @@
 FROM python:3.11-slim
 WORKDIR /app
 
-RUN apt-get update --fix-missing && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
-    pango1.0-tools \
-    libpango-1.0-0 \
-    libpangocairo-1.0-0 \
-    libcairo2 \
-    libgdk-pixbuf2.0-0 \
-    libffi-dev \
-    shared-mime-info \
+    libpq-dev \
     curl \
-    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt

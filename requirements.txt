@@ -1,0 +1,20 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-docx>=1.1.0
+reportlab>=4.1.0
+weasyprint>=62.0
+python-pptx>=0.6.23
+jinja2>=3.1.4
+anthropic>=0.34.0
+openai>=1.45.0
+groq>=0.11.0
+ollama>=0.3.3
+redis>=5.0.8
+pydantic-settings>=2.5.2
+boto3>=1.35.0
+httpx>=0.27.0
+azure-storage-blob
+
+# Testing
+pytest>=8.3.3
+pytest-asyncio>=0.24.0
